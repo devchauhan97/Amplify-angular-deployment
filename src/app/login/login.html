@@ -1,0 +1,12 @@
+<div class="login-container">
+<h2>Login</h2>
+<form class="login-form" (ngSubmit)="doLogin()">
+  <label>Username</label>
+  <input type="text" name="username" [(ngModel)]="username" (ngModelChange)="changeDetector.markForCheck()" placeholder="Enter username">
+  <label>Password</label>
+  <input type="password" name="password" [(ngModel)]="password" (ngModelChange)="changeDetector.markForCheck()" placeholder="Enter password">
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  <button type="submit">Login</button>
+</form>
+
+</div>
