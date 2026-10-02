@@ -15,7 +15,7 @@ export const routes: Routes = [
         path: 'user',
         component: User
     },
-{
+    {
         path: '',
         component: Login
     },
