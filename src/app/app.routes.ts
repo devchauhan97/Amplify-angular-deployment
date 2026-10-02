@@ -10,7 +10,6 @@ export const routes: Routes = [
         component: Dashboard,
         canActivate: [authGuard]
     },
-    
     {
         path: 'user',
         component: User
