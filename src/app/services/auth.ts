@@ -30,7 +30,7 @@ export class Auth {
 
     login(username: string, password: string): Observable<AuthResponse> {
       return this.http.post<AuthResponse>(
-        `${BACKEND_API_URL}/login`,
+        `${BACKEND_API_URL}/auth/login`,
         { username, password },
        // { withCredentials: true },
       );
