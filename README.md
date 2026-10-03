@@ -4,10 +4,12 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Development server
 
-To start a local development server, run:
+For local development, set `BACKEND_API_URL` and optionally
+`BACKEND_API_URL_SLUG` in `.env`. The default slug is `/api`. Start the
+development server with:
 
 ```bash
-ng serve
+npm start
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
@@ -28,13 +30,21 @@ ng generate --help
 
 ## Building
 
-To build the project run:
+Build the project with:
 
 ```bash
-ng build
+npm run build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Before building, the project generates its API URL from the environment
+variables `BACKEND_API_URL` and `BACKEND_API_URL_SLUG` (default `/api`).
+Environment variables provided by the build environment take precedence over
+values in `.env`. In AWS Amplify, add both variables under the app's environment
+variables; the resulting API URL is included in the browser bundle and must not
+contain secrets.
+
+The build artifacts are stored in `dist/`. By default, the production build
+optimizes your application for performance and speed.
 
 ## Running unit tests
 
