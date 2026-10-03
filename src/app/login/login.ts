@@ -19,12 +19,26 @@ export class Login {
   route = inject(ActivatedRoute);
   errorMessage: string = '';
   changeDetector = inject(ChangeDetectorRef);
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth) {
+
+  }
   ngOnChange(){
     console.log('ngOnChange')
   } 
   ngOnInit(){
-    console.log('ngOnInit')
+
+    this.auth.health().subscribe({
+      next: (response) => {
+        // Handle successful login, e.g., navigate to the dashboard
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+        this.navigation.navigateByUrl(returnUrl);
+      },
+      error: (error) => {
+        // Handle login error, e.g., display an error message
+        this.errorMessage = 'Invalid username or password.';
+      }
+    });
+    
   } 
   ngDoCheck(){
     console.log('ngDoCheck')
